@@ -12329,7 +12329,7 @@ def main():
 
         if 0 in posicoes:
             print("\n" + tabuleiro(palpite, posicoes))
-            print("*** Parabéns! Você acertou após", jogo['tentativas'], "tentativa(s)!")
+            print("Parabéns! Você acertou após", 7-jogo['tentativas'], "tentativa(s)!")
             break
         else:
             print("\n" + tabuleiro(palpite, posicoes))
