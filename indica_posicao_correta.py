@@ -1,4 +1,4 @@
-def inidica_posicao(sorteada, chute):
+def indica_posicao(sorteada, chute):
     saida = []
     if len(sorteada) != len(chute):
         return []
