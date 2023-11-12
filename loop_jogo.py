@@ -9,9 +9,9 @@ def tabuleiro(palavra, posicoes):
     for i in range(len(palavra)):
         if i < len(posicoes):
             if posicoes[i] == 0:
-                tabuleiro += "\033[1m\033[97m" + palavra[i] + "\033[0m   " #texto negrito
+                tabuleiro += "\033[1m\033[97m" + palavra[i].upper() + "\033[0m   "
             elif posicoes[i] == 1:
-                tabuleiro += "\033[3m" + palavra[i] + "\033[0m    " #texto italico
+                tabuleiro += "\033[3m" + palavra[i] + "\033[0m    " 
             else:
                 tabuleiro += palavra[i] + "            "
     return tabuleiro
