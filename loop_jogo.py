@@ -12309,8 +12309,9 @@ def main():
 ]
     certas = filtra(lista_palavras, 5) 
     jogo = inicializa(certas)
+    acertou=False
 
-    while jogo['tentativas'] > 0:
+    while jogo['tentativas'] > 0 and not acertou:
         print(f"Você tem {jogo['tentativas']} tentativa(s)")
 
         palpite = input("Qual seu palpite? ").lower()
@@ -12333,13 +12334,14 @@ def main():
         if all(posicao == 1 for posicao in posicoes):
             print("\n" + tabuleiro(palpite, posicoes))
             print("Parabéns! Você acertou após", 7 - jogo['tentativas'], "tentativa(s)!")
+            acertou=True
             break
         else:
             print("\n" + tabuleiro(palpite, posicoes))
             jogo['tentativas'] -= 1
 
-        if jogo['tentativas'] == 0:
-            print(f"\nVocê perdeu, a palavra era: {jogo['sorteada']}")
+    if not acertou:
+        print(f"\nVocê perdeu, a palavra era: {jogo['sorteada']}")
 
 if __name__ == "__main__":
     main()
