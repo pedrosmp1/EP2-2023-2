@@ -12333,7 +12333,7 @@ def main():
 
         if all(posicao == 1 for posicao in posicoes):
             print("\n" + tabuleiro(palpite, posicoes))
-            print("Parabéns! Você acertou após", 7 - jogo['tentativas'], "tentativa(s)!")
+            
             acertou=True
             break
         else:
@@ -12342,6 +12342,8 @@ def main():
 
     if not acertou:
         print(f"\nVocê perdeu, a palavra era: {jogo['sorteada']}")
+    if acertou:
+        print("Parabéns! Você acertou após", 7 - jogo['tentativas'], "tentativa(s)!")
 
 if __name__ == "__main__":
     main()
