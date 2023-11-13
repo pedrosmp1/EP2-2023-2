@@ -12320,7 +12320,7 @@ def main():
             break
         if len(palpite) != 5:
             print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
-        continue
+            continue
 
         if palpite in jogo['especuladas']:
             print("Palavra já testada!")
