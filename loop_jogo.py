@@ -12331,18 +12331,17 @@ def main():
 
         posicoes = indica_posicao(jogo['sorteada'], palpite)
 
-        if all(posicao == 1 for posicao in posicoes):
-            print(f"Parabéns! Você acertou após {7 - jogo['tentativas']} tentativa(s)!")
-            acertou=True
-            break
+        print("\n" + tabuleiro(palpite, posicoes))
+
+        acertou = all(posicao == 1 for posicao in posicoes)
+
+        if acertou:
+            print(f"Parabéns! Você acertou após {6 - jogo['tentativas']} tentativa(s)!")
         else:
-            print("\n" + tabuleiro(palpite, posicoes))
             jogo['tentativas'] -= 1
 
     if not acertou:
         print(f"\nVocê perdeu, a palavra era: {jogo['sorteada']}")
-    if acertou:
-        print("Parabéns! Você acertou após", 7 - jogo['tentativas'], "tentativa(s)!")
 
 if __name__ == "__main__":
     main()
