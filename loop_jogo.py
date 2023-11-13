@@ -12347,6 +12347,35 @@ def main():
             acertou=False
         else:
             print('Muito obrigado por jogar!')
+            
+    while jogo['tentativas'] > 0 and not acertou:
+        print(f"Você tem {jogo['tentativas']} tentativa(s)")
+
+        palpite = input("Qual seu palpite? ").lower()
+
+        if palpite == "desisto":
+            print(f"Pena que você desistiu! A palavra era: {jogo['sorteada']}")
+            break
+        if len(palpite) != 5:
+            print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
+            continue
+
+        if palpite in jogo['especuladas']:
+            print("Palavra já testada!")
+            continue
+
+        jogo['especuladas'].append(palpite)
+
+        posicoes = indica_posicao(jogo['sorteada'], palpite)
+
+        print("\n" + tabuleiro(palpite, posicoes))
+
+        acertou = all(posicao == 1 for posicao in posicoes)
+
+        if acertou:
+            print(f"Parabéns! Você acertou após {6 - jogo['tentativas']} tentativa(s)!")
+        else:
+            jogo['tentativas'] -= 1
 
 if __name__ == "__main__":
     main()
