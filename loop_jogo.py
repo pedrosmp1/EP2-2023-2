@@ -12319,7 +12319,7 @@ def main():
             print(f"Pena que você desistiu! A palavra era: {jogo['sorteada']}")
             break
         if len(palpite) != 5:
-        print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
+            print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
         continue
 
         if palpite in jogo['especuladas']:
