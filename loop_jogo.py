@@ -12332,8 +12332,7 @@ def main():
         posicoes = indica_posicao(jogo['sorteada'], palpite)
 
         if all(posicao == 1 for posicao in posicoes):
-            print("\n" + tabuleiro(palpite, posicoes))
-            
+            print(f"Parabéns! Você acertou após {7 - jogo['tentativas']} tentativa(s)!")
             acertou=True
             break
         else:
