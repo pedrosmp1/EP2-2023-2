@@ -18,19 +18,18 @@ def tabuleiro(palavra, posicoes):
 
 #função que mostra o quadro inicial do jogo:
 def inicio():
-    print("=" * 45)
-    print("| Bem-vindo ao seu desafio diário de Desoft! |")
-    print(" ==== Disciplina: Design de Software === ")
-    print("Comandos: desisto - faz com que o jogo pare, caso deseja desistir")
+    print("-" * 45)
+    print(" Bem-vindo ao termo de Desoft! ")
     print("Regras:")
+    print(" - Comandos: desisto - faz com que o jogo pare, caso deseja desistir")
     print(" - São 6 tentativas para acertar uma palavra aleatória de 5 letras, em português.")
     print(" - A cada tentativa, a palavra testada vai apresentar suas letras de acordo com as regras:")
-    print("   . Negrito: a letra está na palavra e na posição correta;")
+    print("   . Maiúsculo: a letra está na palavra e na posição correta;")
     print("   . Itálico: a palavra tem a letra, mas está na posição errada;")
     print("   . Texto sem modificação: a palavra não tem a letra.")
     print(" - Acentos não serão levados em conta;")
     print(" - Há a chance da palavra ter letra repetida!.")
-    print("=" * 45)
+    print("-" * 45)
 
 #função com o loop principal do jogo:
 def main():
@@ -12342,6 +12341,12 @@ def main():
 
     if not acertou:
         print(f"\nVocê perdeu, a palavra era: {jogo['sorteada']}")
+        cont=input('Deseja continuar? S/N')
+        if cont=='S':
+            jogo['tentativa']=6
+            acertou=False
+        else:
+            print('Muito obrigado por jogar!')
 
 if __name__ == "__main__":
     main()
