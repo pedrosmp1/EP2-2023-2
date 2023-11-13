@@ -21,7 +21,7 @@ def inicio():
     print("-" * 45)
     print(" Bem-vindo ao termo de Desoft! ")
     print("Regras:")
-    print(" - Comandos: desisto - faz com que o jogo pare, caso deseja desistir")
+    print(" - desisto:o jogo se encerra")
     print(" - São 6 tentativas para acertar uma palavra aleatória de 5 letras, em português.")
     print(" - A cada tentativa, a palavra testada vai apresentar suas letras de acordo com as regras:")
     print("   . Maiúsculo: a letra está na palavra e na posição correta;")
@@ -12345,37 +12345,40 @@ def main():
         if cont=='S':
             jogo['tentativa']=6
             acertou=False
+            while jogo['tentativas'] > 0 and not acertou:
+                print(f"Você tem {jogo['tentativas']} tentativa(s)")
+
+                palpite = input("Qual seu palpite? ").lower()
+
+                if palpite == "desisto":
+                    print(f"Pena que você desistiu! A palavra era: {jogo['sorteada']}")
+                    break
+                if len(palpite) != 5:
+                    print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
+                    continue
+
+                if palpite in jogo['especuladas']:
+                    print("Palavra já testada!")
+                    continue
+
+                jogo['especuladas'].append(palpite)
+
+                posicoes = indica_posicao(jogo['sorteada'], palpite)
+
+                print("\n" + tabuleiro(palpite, posicoes))
+
+                acertou = all(posicao == 1 for posicao in posicoes)
+
+                if acertou:
+                    print(f"Parabéns! Você acertou após {6 - jogo['tentativas']} tentativa(s)!")
+                else:
+                    jogo['tentativas'] -= 1
+
         else:
             print('Muito obrigado por jogar!')
-            
-    while jogo['tentativas'] > 0 and not acertou:
-        print(f"Você tem {jogo['tentativas']} tentativa(s)")
+        
 
-        palpite = input("Qual seu palpite? ").lower()
-
-        if palpite == "desisto":
-            print(f"Pena que você desistiu! A palavra era: {jogo['sorteada']}")
-            break
-        if len(palpite) != 5:
-            print("Palavra inválida! A palavra deve ter exatamente 5 letras.")
-            continue
-
-        if palpite in jogo['especuladas']:
-            print("Palavra já testada!")
-            continue
-
-        jogo['especuladas'].append(palpite)
-
-        posicoes = indica_posicao(jogo['sorteada'], palpite)
-
-        print("\n" + tabuleiro(palpite, posicoes))
-
-        acertou = all(posicao == 1 for posicao in posicoes)
-
-        if acertou:
-            print(f"Parabéns! Você acertou após {6 - jogo['tentativas']} tentativa(s)!")
-        else:
-            jogo['tentativas'] -= 1
+    
 
 if __name__ == "__main__":
     main()
